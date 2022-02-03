@@ -1,3 +1,6 @@
 ### NETFLIX 
 
 - useAnimation는 애니메이션을 동시에 실행시키고 싶을때 유용하다.
+- https://developers.themoviedb.org/
+- fetch함수는 데이터를 받아오고 JSON을 리턴하는 함수이다. 
+- useQuery Hook은 fetch함수를 사용해서 data와 아직 로딩중인지에 대한 알림을 전달해준다.
