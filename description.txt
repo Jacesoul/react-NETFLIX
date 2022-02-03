@@ -4,3 +4,4 @@
 - https://developers.themoviedb.org/
 - fetch함수는 데이터를 받아오고 JSON을 리턴하는 함수이다. 
 - useQuery Hook은 fetch함수를 사용해서 data와 아직 로딩중인지에 대한 알림을 전달해준다.
+- <></>는 많은 요소를 공통된 부모없이 연이어서 리턴할수 있는 방법이다. 
