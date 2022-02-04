@@ -1,4 +1,5 @@
 import { AnimatePresence, motion, useViewportScroll } from "framer-motion";
+import { builtinModules } from "module";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { useHistory, useRouteMatch } from "react-router-dom";
@@ -94,6 +95,31 @@ const BigMovie = styled(motion.div)`
   left: 0;
   right: 0;
   margin: 0 auto;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: ${(props) => props.theme.black.lighter};
+`;
+
+const BigCover = styled.div`
+  width: 100%;
+  height: 400px;
+  background-size: cover;
+  background-position: center center;
+`;
+
+const BigTitle = styled.h3`
+  color: ${(props) => props.theme.white.lighter};
+  font-size: 28px;
+  padding: 20px;
+  position: relative;
+  top: -80px;
+`;
+
+const BigOverview = styled.p`
+  padding: 20px;
+  position: relative;
+  top: -80px;
+  color: ${(props) => props.theme.white.lighter};
 `;
 
 const rowVariants = {
@@ -159,7 +185,11 @@ function Home() {
   const onBoxClicked = (movieId: number) => {
     history.push(`/movies/${movieId}`);
   };
-  const onOverlayClick = () => history.goBack();
+  const onOverlayClick = () => history.goBack(); // history.push("/")와 같은 의미
+  const clickedMoive =
+    bigMovieMatch?.params.movieId &&
+    data?.results.find((movie) => movie.id === +bigMovieMatch.params.movieId);
+  console.log(clickedMoive);
   return (
     <Wrapper>
       {isLoading ? (
@@ -216,7 +246,22 @@ function Home() {
                 <BigMovie
                   style={{ top: scrollY.get() + 50 }}
                   layoutId={bigMovieMatch.params.movieId}
-                ></BigMovie>
+                >
+                  {clickedMoive && (
+                    <>
+                      <BigCover
+                        style={{
+                          backgroundImage: `linear-gradient(to top, black,  transparent), url(${makeImagePath(
+                            clickedMoive.backdrop_path,
+                            "w500"
+                          )})`,
+                        }}
+                      ></BigCover>
+                      <BigTitle>{clickedMoive.title}</BigTitle>
+                      <BigOverview>{clickedMoive.overview}</BigOverview>
+                    </>
+                  )}
+                </BigMovie>
               </>
             ) : null}
           </AnimatePresence>
