@@ -9,3 +9,9 @@
 - AnimatePresence의 initial props에 false값을 넣어주면 컴포넌트가 처음 실행될때 자식 컴포넌트의 initial이 실행되지 않는다.
 - useHistory Hook을 사용하면 URL을 왔다갔다 할수있다.
 - <Route path={["/", "/movies/:movieId"]}> => react-router가 두개의 path에서 같은 컴포넌트를 render하도록 할수 있다.
+
+### Code Challenge 
+- TV Show 
+- Search 
+- BigMovieCard
+- More Slider 
